@@ -18,4 +18,4 @@ In addition to the general structure provided by *tauri update*, there are three
 - `channel` is used to specify the channel from which the update must be served. For example `beta`, `stable`, `trial` etc.
 - `suggested` is the target version which I would like to be served. The server itself does not have to fulfill such request.
 
-Both `licence` and `channel` if not populated can be automatically assigned to a default value specified as part of the server configuration.
+Both `licence` and `channel`, if not populated, can be automatically assigned to a default value specified as part of the server configuration.

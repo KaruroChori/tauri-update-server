@@ -18,7 +18,7 @@ export default class events extends Model {
         key: 'id'
       }
     },
-    version: {
+    release: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -29,11 +29,34 @@ export default class events extends Model {
     date: {
       type: DataTypes.DATE,
       allowNull: false
+    },
+    initial: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    token: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      unique: true
+    },
+    used: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
     sequelize,
     tableName: 'events',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "sqlite_autoindex_events_1",
+        unique: true,
+        fields: [
+          { name: "token" },
+        ]
+      },
+    ]
   });
   }
 }

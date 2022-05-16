@@ -19,8 +19,8 @@ export default function initModels(sequelize) {
   licences.hasMany(events, { as: "events", foreignKey: "licence"});
   subscriptions.belongsTo(licences, { as: "licence_licence", foreignKey: "licence"});
   licences.hasMany(subscriptions, { as: "subscriptions", foreignKey: "licence"});
-  events.belongsTo(releases, { as: "version_release", foreignKey: "version"});
-  releases.hasMany(events, { as: "events", foreignKey: "version"});
+  events.belongsTo(releases, { as: "release_release", foreignKey: "release"});
+  releases.hasMany(events, { as: "events", foreignKey: "release"});
 
   return {
     channels,

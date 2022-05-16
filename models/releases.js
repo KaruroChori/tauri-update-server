@@ -12,13 +12,15 @@ export default class releases extends Model {
     },
     arch: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     version: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
-    'version-verbose': {
+    notes: {
       type: DataTypes.TEXT,
       allowNull: true
     },
@@ -28,7 +30,8 @@ export default class releases extends Model {
       references: {
         model: 'channels',
         key: 'id'
-      }
+      },
+      unique: true
     },
     path: {
       type: DataTypes.TEXT,
@@ -36,6 +39,10 @@ export default class releases extends Model {
     },
     date: {
       type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    signature: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
     enabled: {
@@ -46,7 +53,18 @@ export default class releases extends Model {
   }, {
     sequelize,
     tableName: 'releases',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "unique_release",
+        unique: true,
+        fields: [
+          { name: "arch" },
+          { name: "version" },
+          { name: "channel" },
+        ]
+      },
+    ]
   });
   }
 }
