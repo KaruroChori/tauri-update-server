@@ -30,3 +30,6 @@ In the public repository the referenced file does not exist, an error code will 
 - Accept suggestions from the client for a specific version
 - Provide CLI via a separate tool to push new releases on the server
 - Async checks on the db to tag licences which are cheating.
+
+## HR Schema
+![HR Schema](./docs/diagram.png)
