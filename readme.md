@@ -19,3 +19,8 @@ In addition to the general structure provided by *tauri update*, there are three
 - `suggested` is the target version which I would like to be served. The server itself does not have to fulfill such request.
 
 Both `licence` and `channel`, if not populated, can be automatically assigned to a default value specified as part of the server configuration.
+
+## Usage
+There is some data stored on the db for the sake of testing.  
+Visiting `localhost:8000/linux-amd64/0` a json file will be returned, with a one-time token which can be used to download the pointed file.  
+In the public repository the referenced file does not exist, an error code will be returned instead.
