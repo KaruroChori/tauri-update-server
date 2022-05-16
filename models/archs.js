@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class channels extends Model {
+export default class archs extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
     id: {
@@ -17,11 +17,11 @@ export default class channels extends Model {
     }
   }, {
     sequelize,
-    tableName: 'channels',
+    tableName: 'archs',
     timestamps: false,
     indexes: [
       {
-        name: "sqlite_autoindex_channels_1",
+        name: "sqlite_autoindex_archs_1",
         unique: true,
         fields: [
           { name: "label" },

@@ -11,8 +11,12 @@ export default class releases extends Model {
       primaryKey: true
     },
     arch: {
-      type: DataTypes.TEXT,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'archs',
+        key: 'id'
+      },
       unique: true
     },
     version: {

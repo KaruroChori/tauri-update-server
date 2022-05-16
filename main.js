@@ -33,7 +33,7 @@ try {
     throw new Error('DB failure')
 }
 
-const { events, licences, releases, channels, subscriptions } = initModels(db)
+const { events, licences, releases, channels, subscriptions, archs } = initModels(db)
 
 //Set default values for channels and licences in case applications do not have one.
 const default_channel = 'free'
@@ -114,6 +114,14 @@ server.get('/*', async (req, res) => {
         if (secret_match.length == 0) { res.code(204).send(); return; }                // No licence found
         if (secret_match[0]['enabled'] == false) { res.code(204).send(); return; }     // Licence is not enabled
 
+        const arch_match = await archs.findAll({
+            where: {
+                label: client_arch
+            }
+        })
+
+        if (arch_match.length == 0) {res.code(204).send();return;}                   // No arch under this name
+
         const channel_match = await channels.findAll({
             where: {
                 label: client_channel
@@ -136,7 +144,7 @@ server.get('/*', async (req, res) => {
         // At the moment the suggested release value is ignored since the updater server does not have to respect it.
         const release_match = await releases.findAll({
             where: {
-                arch: client_arch,
+                arch: arch_match[0].id,
                 enabled: true,
                 version: {
                     [Op.gt]: client_release
