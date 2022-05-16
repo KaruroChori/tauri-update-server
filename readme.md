@@ -1,10 +1,10 @@
 # Tauri Update Server
 A minimalistic implementation of a server to integrate auto-updating functionality on tauri applications.  
-It is meant to support licences to constrain and track the available updates.  
+It is meant to support user licences and channels to constrain and track the available updates.  
 
 This is a prototype.  
-Functionality is not there yet.  
-No interface planned to update the db from here, just for content delivery.  
+Functionality is not there yet, but as of now it should be working.  
+No interface to update the db from here, just for content delivery.  
 
 ## Usage
 
@@ -24,3 +24,9 @@ Both `licence` and `channel`, if not populated, can be automatically assigned to
 There is some data stored on the db for the sake of testing.  
 Visiting `localhost:8000/linux-amd64/0` a json file will be returned, with a one-time token which can be used to download the pointed file.  
 In the public repository the referenced file does not exist, an error code will be returned instead.
+
+
+## TODO
+- Accept suggestions from the client for a specific version
+- Provide CLI via a separate tool to push new releases on the server
+- Async checks on the db to tag licences which are cheating.
