@@ -11,14 +11,10 @@ export default class licences extends Model {
       primaryKey: true,
       unique: true
     },
-    'public-key': {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
-    permissions: {
+    secret: {
       type: DataTypes.TEXT,
       allowNull: false,
-      defaultValue: "{}"
+      unique: true
     },
     enabled: {
       type: DataTypes.BOOLEAN,
@@ -41,13 +37,7 @@ export default class licences extends Model {
         name: "sqlite_autoindex_licences_2",
         unique: true,
         fields: [
-          { name: "public-key" },
-        ]
-      },
-      {
-        name: "licence-list",
-        fields: [
-          { name: "public-key" },
+          { name: "secret" },
         ]
       },
     ]

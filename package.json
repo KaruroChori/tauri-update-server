@@ -8,9 +8,9 @@
   "dependencies": {
     "sequelize": "^6.19.0",
     "sequelize-auto": "^0.8.8",
-    "sqlite3": "^5.0.8"
+    "sqlite3": "^5.0.8",
+    "whatwg-url": "^11.0.0"
   },
-
   "scripts": {
     "start": "node main.js",
     "db-auto": "sequelize-auto -i './models' -h localhost -u d  --dialect sqlite -d './private/db' -l esm"

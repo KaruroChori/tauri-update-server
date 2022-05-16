@@ -22,19 +22,26 @@ export default class releases extends Model {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    channels: {
-      type: DataTypes.TEXT,
+    channel: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "[\"all\"]"
+      references: {
+        model: 'channels',
+        key: 'id'
+      }
+    },
+    path: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
     },
     enabled: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
-    },
-    data: {
-      type: DataTypes.BLOB,
-      allowNull: false
     }
   }, {
     sequelize,
