@@ -3,7 +3,7 @@ A minimalistic implementation of a server to integrate auto-updating functionali
 It is meant to support user licences and channels to constrain and track the available updates.  
 
 This is a prototype.  
-Functionality is not there yet, but as of now it should be working.  
+Functionality is not fully there yet, but as of now it should be working.  
 No interface to update the db from here, just for content delivery.  
 
 ## Usage
@@ -66,8 +66,9 @@ const default_config = {
 ```
 
 ## TODO
-- Accept suggestions from the client for a specific version
-- Provide CLI via a separate tool to push new releases on the server
+- Accept suggestions from the client for a specific version.
+- Provide CLI via a separate tool to push new releases on the server.
+- Custom callbacks for some of the failure events.
 - Async checks on the db to tag licences which are cheating.
 
 ## ER Schema
