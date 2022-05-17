@@ -24,7 +24,40 @@ Both `licence` and `channel`, if not populated, can be automatically assigned to
 There is some data stored on the db for the sake of testing.  
 Visiting `localhost:8000/update/linux-amd64/0` a json file will be returned, with a one-time token which can be used to download the pointed file.  
 In the public repository the referenced file does not exist, an error code will be returned instead.
+This demo is using an sqlite db, but since Sequelize is leveraged within the serve, this code is fully portable with only minimal configuration needed.
 
+## Configuration
+The behaviour of the server can be changed via a configuration object.
+- **port**: the port to
+- **db**: the configuration object for Sequelize.
+- **default_channel**: the default value for channel if client is not specifying a custom header for it.
+- **default_secret**: same for the licence.
+- **fastify**: an object for the fastify configuration (https etc.)
+- **storage**: `base` and `protocol` for the storage entry point. Base must be a single directory token.
+- **update**: same but for the update entry point on the server.
+A default configuration is used in case no custom one has been provided. 1st level children are interpolated:
+
+```
+const default_config = {
+    host: 'localhost',
+    port: 8000,
+    db: {
+        dialect: 'sqlite',
+        storage: './private/db'
+    },
+    default_channel: 'free',
+    default_secret: 'free-licence',
+    fastify: {},
+    storage: {
+        protocol:"http",
+        base:"/s/"
+    },
+    update: {
+        protocol: "http",
+        base:"/u/"
+    }
+}
+```
 
 ## TODO
 - Accept suggestions from the client for a specific version
