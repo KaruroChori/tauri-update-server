@@ -26,6 +26,12 @@ Visiting `localhost:8000/update/linux-amd64/0` a json file will be returned, wit
 In the public repository the referenced file does not exist, an error code will be returned instead.
 This demo is using an sqlite db, but since Sequelize is leveraged within the serve, this code is fully portable with only minimal configuration needed.
 
+```
+import { tus } from './tus.js'
+
+tus();
+```
+
 ## Configuration
 The behaviour of the server can be changed via a configuration object.
 - **port**: the port to
