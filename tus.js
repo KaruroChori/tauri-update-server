@@ -61,6 +61,10 @@ export const tus = async (configi) => {
     }
 
     const { events, licences, releases, channels, subscriptions, archs } = initModels(db)
+    
+    //This is here until a new version of Sequelize will add a specific directive to prevent the automatic generation of a primary key.
+    subscriptions.removeAttribute('id')
+
 
     //Set default values for channels and licences in case applications do not have one.
     const default_channel = config.default_channel

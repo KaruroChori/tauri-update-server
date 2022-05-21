@@ -14,7 +14,11 @@ export default class subscriptions extends Model {
     },
     channel: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'channels',
+        key: 'id'
+      }
     }
   }, {
     sequelize,

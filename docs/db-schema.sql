@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS "subscriptions" (
 	"licence"	INTEGER NOT NULL,
 	"channel"	INTEGER NOT NULL,
 	FOREIGN KEY("licence") REFERENCES "licences"("id") ON DELETE CASCADE,
-	FOREIGN KEY("channel") REFERENCES "channels"("id") ON DELETE CASCADE
+	FOREIGN KEY("channel") REFERENCES "channels"("id") ON DELETE CASCADE,
+	UNIQUE("licence","channel")
 );
 DROP TABLE IF EXISTS "channels";
 CREATE TABLE IF NOT EXISTS "channels" (
@@ -23,7 +24,8 @@ CREATE TABLE IF NOT EXISTS "releases" (
 	"signature"	TEXT,
 	"enabled"	BOOLEAN NOT NULL DEFAULT 0,
 	FOREIGN KEY("channel") REFERENCES "channels"("id") ON DELETE CASCADE,
-	FOREIGN KEY("arch") REFERENCES "archs"("id") ON DELETE CASCADE
+	FOREIGN KEY("arch") REFERENCES "archs"("id") ON DELETE CASCADE,
+	UNIQUE("arch","version","channel")
 );
 DROP TABLE IF EXISTS "archs";
 CREATE TABLE IF NOT EXISTS "archs" (

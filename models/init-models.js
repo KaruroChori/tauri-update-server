@@ -19,15 +19,14 @@ export default function initModels(sequelize) {
   archs.hasMany(releases, { as: "releases", foreignKey: "arch"});
   releases.belongsTo(channels, { as: "channel_channel", foreignKey: "channel"});
   channels.hasMany(releases, { as: "releases", foreignKey: "channel"});
+  subscriptions.belongsTo(channels, { as: "channel_channel", foreignKey: "channel"});
+  channels.hasMany(subscriptions, { as: "subscriptions", foreignKey: "channel"});
   events.belongsTo(licences, { as: "licence_licence", foreignKey: "licence"});
   licences.hasMany(events, { as: "events", foreignKey: "licence"});
   subscriptions.belongsTo(licences, { as: "licence_licence", foreignKey: "licence"});
   licences.hasMany(subscriptions, { as: "subscriptions", foreignKey: "licence"});
   events.belongsTo(releases, { as: "release_release", foreignKey: "release"});
   releases.hasMany(events, { as: "events", foreignKey: "release"});
-
-  //This is here until a new version of Sequelize will add a specific directive to prevent the automatic generation of a primary key.
-  subscriptions.removeAttribute('id')
 
   return {
     archs,
@@ -37,5 +36,4 @@ export default function initModels(sequelize) {
     releases,
     subscriptions,
   };
-
 }
