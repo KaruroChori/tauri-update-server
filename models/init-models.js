@@ -26,6 +26,9 @@ export default function initModels(sequelize) {
   events.belongsTo(releases, { as: "release_release", foreignKey: "release"});
   releases.hasMany(events, { as: "events", foreignKey: "release"});
 
+  //This is here until a new version of Sequelize will add a specific directive to prevent the automatic generation of a primary key.
+  subscriptions.removeAttribute('id')
+
   return {
     archs,
     channels,
@@ -34,4 +37,5 @@ export default function initModels(sequelize) {
     releases,
     subscriptions,
   };
+
 }
