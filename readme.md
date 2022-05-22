@@ -67,7 +67,7 @@ const default_config = {
 
 ## TODO
 - Accept suggestions from the client for a specific version.
-- ~~Provide CLI via a separate tool to push new releases on the server.~~ via an external tool [TUS-CLI](https://github.com/KaruroChori/taus-cli)
+- ~~Provide CLI via a separate tool to push new releases on the server.~~ via an external tool [TAUS-CLI](https://github.com/KaruroChori/taus-cli)
 - Custom callbacks for some of the failure events.
 - ~~Async checks on the db to tag licences which are cheating.~~ via external tools
 
