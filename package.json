@@ -1,19 +1,23 @@
 {
   "type": "module",
-  "name": "tauri-update-server",
+  "name": "@taus-services/taus",
   "version": "1.0.0",
+  "main": "index.js",
   "description": "Minimalistic server to deploy tauri updates with licence control.",
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
+    "@taus-services/commons": "^0.0.4",
     "fastify": "^3.29.0",
     "sequelize": "^6.19.0",
-    "sequelize-auto": "^0.8.8",
     "sqlite3": "^5.0.8",
     "whatwg-url": "^11.0.0"
   },
   "scripts": {
-    "start": "node main.js",
-    "db-auto": "sequelize-auto -i './models' -h localhost -u d  --dialect sqlite -d './private/db' -l esm"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

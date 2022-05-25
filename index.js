@@ -7,8 +7,8 @@ import crypto from 'crypto';
 import { promises as fs } from 'fs';
 import { Sequelize, Op, Model, DataTypes } from 'sequelize';
 
-import initModels from'./models/init-models.js'
-
+//import initModels from'./models/init-models.js'
+import {dbSchemas,apiSchemas} from '@taus-services/commons'
 
 
 import { fastify } from 'fastify'
@@ -18,7 +18,7 @@ const default_config = {
     port: 8000,
     db: {
         dialect: 'sqlite',
-        storage: './private/db'
+        storage: './example/db'
     },
     default_channel: 'free',
     default_secret: 'free-licence',
@@ -30,10 +30,11 @@ const default_config = {
     update: {
         protocol: "http",
         base:"/u/"
-    }
+    },
+    dbSchemas: dbSchemas
 }
 
-export const tus = async (configi) => {
+export const taus = async (configi) => {
 
     let config = {}
     //Use default_config as backup values
@@ -60,7 +61,7 @@ export const tus = async (configi) => {
         throw new Error('DB failure')
     }
 
-    const { events, licences, releases, channels, subscriptions, archs } = initModels(db)
+    const { events, licences, releases, channels, subscriptions, archs } = config.dbSchemas(db)
     
     //This is here until a new version of Sequelize will add a specific directive to prevent the automatic generation of a primary key.
     subscriptions.removeAttribute('id')

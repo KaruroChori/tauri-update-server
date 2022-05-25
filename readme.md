@@ -27,9 +27,9 @@ In the public repository the referenced file does not exist, an error code will 
 This demo is using an sqlite db, but since Sequelize is leveraged within the serve, this code is fully portable with only minimal configuration needed.
 
 ```
-import { tus } from './tus.js'
+import { taus } from './taus.js'
 
-tus();
+taus();
 ```
 
 ## Configuration
