@@ -1,13 +1,13 @@
 {
   "type": "module",
   "name": "@taus-services/taus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
-  "description": "Minimalistic server to deploy tauri updates with licence control.",
-  "main": "main.js",
+  "description": "Minimalistic server to deploy tauri updates with licence control and channel selection.",
+  "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@taus-services/commons": "^0.0.4",
+    "@taus-services/commons": "*",
     "fastify": "^3.29.0",
     "sequelize": "^6.19.0",
     "sqlite3": "^5.0.8",
