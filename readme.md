@@ -7,9 +7,8 @@ Functionality is not fully there yet, but as of now it should be working.
 No interface to update the db from here, just for content delivery.  
 
 ## Usage
-
-- `yarn start` to start the node server.
-- `yarn db-auto` to automatically generate models for the database `./private/db`.
+`yarn add @taus-services/taus` to install the node server, or `npm install @taus-services/taus`.
+You can reference [this](https://github.com/KaruroChori/taus-example) other repository to have a working example.
 
 ## Custom headers
 In addition to the general structure provided by *tauri update*, there are three more fields which are used to define proper conditions for delivery:
@@ -20,17 +19,6 @@ In addition to the general structure provided by *tauri update*, there are three
 
 Both `licence` and `channel`, if not populated, can be automatically assigned to a default value specified as part of the server configuration.
 
-## Usage
-There is some data stored on the db for the sake of testing.  
-Visiting `localhost:8000/update/linux-amd64/0` a json file will be returned, with a one-time token which can be used to download the pointed file.  
-In the public repository the referenced file does not exist, an error code will be returned instead.
-This demo is using an sqlite db, but since Sequelize is leveraged within the serve, this code is fully portable with only minimal configuration needed.
-
-```
-import { taus } from './taus.js'
-
-taus();
-```
 
 ## Configuration
 The behaviour of the server can be changed via a configuration object.
@@ -49,7 +37,7 @@ const default_config = {
     port: 8000,
     db: {
         dialect: 'sqlite',
-        storage: './private/db'
+        storage: './example/db'
     },
     default_channel: 'free',
     default_secret: 'free-licence',
@@ -64,6 +52,8 @@ const default_config = {
     }
 }
 ```
+
+If you need you can also specify custom DB schema generated with sequelize-auto as `dbSchema`, but keep in mind that the codebase for the server might need to be changed from you as well.
 
 ## TODO
 - Accept suggestions from the client for a specific version.
